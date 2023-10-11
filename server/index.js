@@ -17,7 +17,7 @@ mongoose.connect(
         useUnifiedTopology: true
     })
     .then(()=>{
-        app.listen(8800, ()=>{
+        app.listen(8080, ()=>{
             console.log("Server is connected to port 3001 and connected to MongoDB")
         })
     })

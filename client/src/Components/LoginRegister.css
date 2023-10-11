@@ -1,0 +1,187 @@
+:root {
+  --cyan-color: #48c6b7;
+  --cyan-color-dark: #3ca99c;
+  --blue-dark: #1f2937;
+  --gray-light: #e5e7eb;
+  --extra-light: #f4f6f6;
+  --white: #ffffff;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  min-height: 100vh;
+}
+
+.login_container_left {
+  background: url("../../public/assets/Sign_In.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.register_container_left {
+  background: url("../../public/assets/Sign_Up.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container_right {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--extra-light);
+}
+
+.content {
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--blue-dark);
+  margin-bottom: 3rem;
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--blue-dark);
+    margin-bottom: 1.5rem;
+}
+  
+.header_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+  
+.header_content p a {
+  text-decoration: none;
+  color: var(--cyan-color);
+}
+
+form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+form input {
+  padding: 1rem;
+  font-size: 1rem;
+  color: #000000;
+  background-color: var(--white);
+  outline: none;
+  border: 2px solid var(--gray-light);
+}
+
+.input {
+  background-color: var(--white);
+}
+
+.error-message{
+  color: #f00;
+}
+
+form button {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  color: var(--white);
+  background-color: var(--cyan-color);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background-color: var(--cyan-color-dark);
+}
+
+#register_btn{
+  margin-bottom: 2rem;
+}
+
+.forget_password {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--cyan-color);
+  margin-bottom: 3rem;
+  cursor: pointer;
+}
+
+.social_login_header {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.social_login {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 0.5rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.social_login:hover {
+  background-color: var(--white);
+  font-weight: 500;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.social_login i {
+  font-size: 1.25rem;
+  color: var(--white);
+  transition: 0.3s;
+}
+
+.social_login span {
+  font-size: 1rem;
+  color: var(--white);
+  transition: 0.3s;
+  font-family: "Poppins", sans-serif;
+}
+
+.social_login:hover span {
+  color: var(--blue-dark);
+}
+
+.google_login {
+  background-color: #d5613b;
+}
+
+.google_login:hover i {
+  color: #d5613b;
+}
+
+@media (width < 750px) {
+    .container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .container_left{
+        min-height: 500px;
+    }
+}

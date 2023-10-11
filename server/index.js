@@ -17,12 +17,12 @@ mongoose.connect(
         useUnifiedTopology: true
     })
     .then(()=>{
-        app.listen(3001, ()=>{
+        app.listen(8080, ()=>{
             console.log("Server is connected to port 3001 and connected to MongoDB")
         })
     })
-    .catch(()=>{
-        console.log("Unable to connect to the server and/or mongodb ")
+    .catch((error)=>{
+        console.log("Unable to connect to the server and/or mongodb ",error)
     })
 
 app.use(bodyParser.json())

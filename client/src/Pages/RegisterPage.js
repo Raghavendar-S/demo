@@ -39,7 +39,7 @@ export function RegisterPage() {
     if (Object.keys(errors).length === 0) {
       try{
         // const response = await axios.post('http://localhost:3001/register',{name,email,phone,password})
-        const response = await axios.post('https://karur-polymers-backend.onrender.com/register',{email,password})
+        const response = await axios.post('https://karur-polymers-backend.onrender.com/register',{name,email,phone,password})
         if(response.data.success){
           toast.success(response.data.message);
           navigate("/login");

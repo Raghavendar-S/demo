@@ -3,6 +3,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import '../Components/LoginRegister.css'
 import TextField from "@mui/material/TextField";
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 export function RegisterPage() {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ export function RegisterPage() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errors = {};
     
@@ -36,20 +37,28 @@ export function RegisterPage() {
     }
 
     if (Object.keys(errors).length === 0) {
-      axios.post('http://localhost:3001/register',{name,email,phone,password})
-      .then((result)=>{
-        console.log(result)
-        navigate("/login")
-      })
-      .catch((error)=>{
-        console.log('Unable to register user')
-      })
+      try{
+        // const response = await axios.post('http://localhost:3001/register',{name,email,phone,password})
+        const response = await axios.post('https://karur-polymers-backend.onrender.com/register',{email,password})
+        if(response.data.success){
+          toast.success(response.data.message);
+          navigate("/login");
+        }else{
+          toast.error(response.data.message);
+        }
+      }
+      catch(error){
+        console.log('Unable to register user');
+        toast.error(error.toString());
+      }
     }else{
       setErrors(errors);
     }
   };
 
   return (
+    <>
+    <Toaster position="top-right" reverseOrder={false}/>
     <div className="container">
       <div className="register_container_left"></div>
       <div className="container_right">
@@ -65,7 +74,7 @@ export function RegisterPage() {
             <TextField required className="input" type="email" label="Email" name="email" 
             value={formData.email} onChange={handleChange} />
             {errors.email && <p className="error-message">{errors.email}</p>}
-            <TextField required className="input" type="number" label="Phone Number" name="phone" 
+            <TextField required className="input" type="tel" label="Phone Number" name="phone" inputProps={{ maxLength: 10 }}
             value={formData.phone} onChange={handleChange} />
             {errors.phone && <p className="error-message">{errors.phone}</p>}
             <TextField required className="input" type="password" label="Password" name="password" 
@@ -86,5 +95,6 @@ export function RegisterPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

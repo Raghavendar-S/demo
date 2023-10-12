@@ -7,6 +7,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 export function LoginPage() {
   const navigate = useNavigate();
@@ -47,13 +48,20 @@ export function LoginPage() {
 
     if (Object.keys(errors).length === 0) {
       try{
+        // const response = await axios.post('http://localhost:3001/login',{email,password})
         const response = await axios.post('https://karur-polymers-backend.onrender.com/login',{email,password})
-        const token = response.data.token
-        localStorage.setItem('token',token)
-        navigate("/dashboard");
-        window.location.reload()
+        if(response.data.success){
+          const token = response.data.token;
+          localStorage.setItem('token',token);
+          localStorage.setItem('loginMessage', response.data.message);
+          navigate("/dashboard");        
+          window.location.reload();
+        }else{
+          toast.error(response.data.message);
+        }
       }catch(error){
-        console.log(error)
+        console.log(error);
+        toast.error(error.toString());
       }
     }else{
       setErrors(errors);
@@ -61,6 +69,8 @@ export function LoginPage() {
   };
 
   return (
+    <>
+    <Toaster position="top-right" reverseOrder={false}/>
     <div className="container">
       <div className="login_container_left"></div>
       <div className="container_right">
@@ -116,5 +126,6 @@ export function LoginPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -4,7 +4,7 @@ const cors = require("cors")
 const bodyParser = require("body-parser")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
-const User = require("./Modals/UserSchema")
+const User = require("./Models/UserSchema")
 const dotenv = require("dotenv")
 
 dotenv.config()
@@ -17,12 +17,12 @@ mongoose.connect(
         useUnifiedTopology: true
     })
     .then(()=>{
-        app.listen(8080, ()=>{
+        app.listen(3001, ()=>{
             console.log("Server is connected to port 3001 and connected to MongoDB")
         })
     })
-    .catch((error)=>{
-        console.log("Unable to connect to the server and/or mongodb ",error)
+    .catch(()=>{
+        console.log("Unable to connect to the server and/or mongodb ")
     })
 
 app.use(bodyParser.json())
@@ -30,22 +30,40 @@ app.use(cors())
 
 app.post('/register', async (req,res)=>{
     try{
-        const {name,email,phone,password} = req.body
+        const {name,email,phone,password,role} = req.body
+        if(!name){
+            return res.send({message:"Name is required"});
+        }
+        if(!email){
+            return res.send({message:"Email is required"});
+        }
+        if(!phone){
+            return res.send({message:"Phone is required"});
+        }
+        if(!password){
+            return res.send({message:"Password is required"});
+        }
+        const existingUser = await User.findOne({email})
+
+        if(existingUser)
+        {
+            return res.send({message:"The email is already registered.Please login with another email"})
+        }
         const hashedPassword = await bcrypt.hash(password,10)
-        const newUser = new User({name,email,phone,password: hashedPassword})
+        const newUser = new User({name,email,phone,password: hashedPassword,role})
         await newUser.save()
-        res.status(201).json({message: 'User created successfully'})
+        res.send({success:true,message: 'Registration is done successfully'})
     } catch (error){
-        res.status(500).json({error:'Error signing up'})
+        res.send({message:'Error signing up'})
     }
 })
 
 app.get('/register', async(req,res)=>{
     try{
         const users = await User.find()
-        res.status(201).json({users})
+        res.send({users})
     }catch(error){
-        res.status(500).json({error:'Unable to get users'})
+        res.send({error:'Unable to get users'})
     }
 })
 
@@ -53,16 +71,19 @@ app.post('/login',async(req,res)=>{
     try{
         const {email,password} = req.body
         const user = await User.findOne({email})
-        if(!email){
-            return res.status(401).json({error:"Invalid Credentials"})
+        if(!email || !password){
+            return res.send({message:"Invalid Credentials"})
+        }
+        if(!user){
+            return res.send({message:"Email is not registered"})
         }
         const isPasswordValid = await bcrypt.compare(password,user.password)
         if(!isPasswordValid){
-            return res.status(401).json({error:"Invalid Credentials"})
+            return res.send({message:"Password mismatch"})
         }
         const token = jwt.sign({userId:user._id},process.env.SECRET_KEY,{expiresIn:'1hr'})
-        res.json({message:'Login successful'})
+        res.send({success:true,message:'Login successful',token})
     } catch(error){
-        res.status(500).json({error:'Error logging in'})
+        res.send({message:'Error logging in'})
     }
 })

@@ -141,9 +141,9 @@ export default function HomePage(){
                     <h2 className="section__header">Contact Us</h2>
                     <p> If you have any questions or inquiries, please feel free to contact us using the information below: </p><br/>
                     <ul className="contact__info">
-                    <li><strong>Email:</strong> info@karurpolymers.com</li>
-                    <li><strong>Phone:</strong> +123-456-7890</li>
-                    <li><strong>Address:</strong> 29 A, 1st Cross Rd, near VRL Transports, Karur, Tamil Nadu-639002, India</li>
+                    <li><strong>Email:</strong> karurpolymerspvtltd@gmail.com</li>
+                    <li><strong>Phone:</strong> 9786640015</li>
+                    <li><strong>Address:</strong> 26 A, Ramakrishna Puram, near VRL Transports, Karur, Tamil Nadu-639002, India</li>
                     </ul>
                 </div>
                 <div className="contact__map">

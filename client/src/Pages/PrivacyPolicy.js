@@ -124,7 +124,7 @@ export default function PrivacyPolicy() {
             <p>
               If you have any questions, concerns, or requests regarding your
               personal information or this Privacy Policy, please contact us at{" "}
-              <a href="mailto:info@karurpolymers.com">info@karurpolymers.com</a>.
+              <a href="mailto:karurpolymerspvtltd@gmail.com">karurpolymerspvtltd@gmail.com</a>.
             </p>
           </li>
           <br />

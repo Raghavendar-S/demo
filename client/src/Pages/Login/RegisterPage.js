@@ -25,12 +25,7 @@ export default function RegisterPage() {
 
     if (Object.keys(errors).length === 0) {
       try{
-<<<<<<< HEAD:client/src/Pages/Login/RegisterPage.js
         const response = await axios.post(`${process.env.REACT_APP_URL}/register`,{name,email,phone,password})
-=======
-        // const response = await axios.post('http://localhost:3001/register',{name,email,phone,password})
-        const response = await axios.post('https://karur-polymers-backend.onrender.com/register',{name,email,phone,password})
->>>>>>> 27a9af530f5a710b62801e8afdaaa5dd480d3adb:client/src/Pages/RegisterPage.js
         if(response.data.success){
           toast.success("Registered successfully");
           navigate("/login");

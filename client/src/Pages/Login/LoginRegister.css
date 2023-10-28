@@ -13,18 +13,26 @@
   min-height: 100vh;
 }
 
-.login_container_left {
-  background: url("../../public/assets/Sign_In.jpg");
+.left_container {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-.register_container_left {
-  background: url("../../public/assets/Sign_Up.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+#login{
+  background-image: url("../../../public/assets/Sign_In.jpg");
+}
+
+#register{
+  background-image: url("../../../public/assets/Sign_Up.jpg");
+}
+
+#forgot{
+  background-image: url("../../../public/assets/forgot.png");
+}
+
+#reset{
+  background-image: url("../../../public/assets/update.png");
 }
 
 .container_right {
@@ -106,6 +114,19 @@ form button {
 
 form button:hover {
   background-color: var(--cyan-color-dark);
+}
+
+.back {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  color: var(--white);
+  background-color: #000;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 #register_btn{

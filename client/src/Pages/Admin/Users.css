@@ -1,0 +1,21 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  
+  padding: 8px;
+  text-align: center;
+}
+
+@media screen and (max-width : 700px) {
+  th,
+  td {
+    padding: 4px;
+    font-size: 10px;
+  }
+}

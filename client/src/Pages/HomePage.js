@@ -1,36 +1,13 @@
-import '../Components/HomePage.css';
+import './HomePage.css';
 import React, { useEffect } from 'react';
 import ScrollReveal from 'scrollreveal';
-import {Link, useNavigate} from 'react-router-dom';
+import Layout from '../Components/Layout/Layout';
+import { useNavigate } from 'react-router-dom';
 
-export function HomePage(){
+export default function HomePage(){
     const navigate = useNavigate();
-    const isUserSignedIn = !!localStorage.getItem('token');
-
-    const handleLogout = () =>{
-        localStorage.removeItem('token');
-        navigate('/');
-        window.location.reload();
-    }
 
     useEffect(() => {
-        const menuBtn = document.getElementById("menu-btn");
-        const navLinks = document.getElementById("nav-links");
-        const menuBtnIcon = menuBtn.querySelector("i");
-      
-        menuBtn.addEventListener("click", (e) => {
-          console.log("click");
-          navLinks.classList.toggle("open");
-      
-          const isOpen = navLinks.classList.contains("open");
-          menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
-        });
-      
-        navLinks.addEventListener("click", (e) => {
-          navLinks.classList.remove("open");
-          menuBtnIcon.setAttribute("class", "ri-menu-line");
-        });
-      
         const scrollRevealOption = {
           distance: "50px",
           origin: "bottom",
@@ -58,38 +35,13 @@ export function HomePage(){
       }, []);       
 
     return(
-        <>
+        <Layout>
             <header className="header">
-                <nav>
-                    <div className="nav__logo">
-                        <img src="../assets/logo.png" alt="logo"/>
-                    </div>
-                    <ul className="nav__links" id="nav-links">
-                        <li className="link"><a href="#home">Home</a></li>
-                        <li className="link"><a href="#choose">About</a></li>
-                        <li className="link"><a href="#craft">Products</a></li>
-                        <li className="link"><a href="#contact">Contact Us</a></li>
-                        {isUserSignedIn ? (
-                            <>
-                                <li className="link"><Link to='/dashboard'>Dashboard</Link></li>
-                                <li className="link"><button onClick={handleLogout}>Logout</button></li>
-                            </>
-                        ):(
-                            <>
-                                <li className="link"><Link to='/login'>Login</Link></li>
-                                <li className="link"><Link to='/register'>Register</Link></li>
-                            </>
-                        )}
-                    </ul>
-                    <div className="nav__menu__btn" id="menu-btn">
-                        <span><i className="ri-menu-line"></i></span>
-                    </div>
-                </nav>
                 <div className="section__container header__container" id="home">
                     <h1>Wrap It, Seal It, Love It</h1>
                     <p> Find the perfect cello tape for all your packaging needs at Karur
                     Polymers - your online store for quality adhesive solutions. </p>
-                    <button>Shop Now</button>
+                    <button onClick={() => navigate('/products')}>Shop Now</button>
                     <div className="arrow-down">
                         <a href="#choose"><i className="ri-arrow-down-double-line"></i></a>
                     </div>
@@ -173,7 +125,7 @@ export function HomePage(){
                     <p className="section__subheader">
                         Discover our products to elevate your packaging style with quality cello tapes.
                     </p>
-                    <button className="btn">Explore Now</button>
+                    <button className="btn" onClick={() => navigate('/products')}>Explore Now</button>
                     </div>
                 </div>
                 <div className="offer__grid__bottom">
@@ -198,7 +150,7 @@ export function HomePage(){
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.9931902845233!2d78.07159809678956!3d10.963886100000025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2fac2291a2b9%3A0xb5a79d821e42d96c!2sKarur%20Polymers%20Private%20Limited!5e0!3m2!1sen!2sin!4v1696235275636!5m2!1sen!2sin"
                         width="100%"
-                        height="450"
+                        height="450px"
                         style={{ border: "0" }}
                         allowFullScreen
                         loading="lazy"
@@ -206,21 +158,7 @@ export function HomePage(){
                         referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 </section>    
-                
-                <footer className="footer">
-                <div className="section__container footer__container">
-                    <div className="footer__logo">
-                        <h4><a href="#home">Karur Polymers</a></h4>
-                        <p>Copyright © 2023 Cello Tape Sales. All rights reserved.</p>
-                    </div>
-                    <ul className="footer__nav">
-                        <li className="footer__link"><a href="#choose">About</a></li>
-                        <li className="footer__link"><a href="#contact">Contact</a></li>
-                        <li className="footer__link"><a href="#privacy">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </footer>
-        </>
+        </Layout>
     );
 }
 

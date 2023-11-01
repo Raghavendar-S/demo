@@ -81,10 +81,10 @@ export default function HomePage(){
                     </p>
                     <div className="choose__grid">
                         <div className="choose__card">
-                            <span><i className="ri-truck-line"></i></span>
-                            <h4>Fast Shipping</h4>
+                            <span><i className="ri-customer-service-2-line"></i></span>
+                            <h4>Customer Support</h4>
                             <p>
-                                Get your cello tapes quickly with our Fast Shipping service.
+                                Our dedicated support team is available round the clock to assist you.
                             </p>
                         </div>
                         <div className="choose__card">
@@ -95,10 +95,10 @@ export default function HomePage(){
                             </p>
                         </div>
                         <div className="choose__card">
-                            <span><i className="ri-customer-service-2-line"></i></span>
-                            <h4>Customer Support</h4>
+                            <span><i className="ri-truck-line"></i></span>
+                            <h4>Fast Shipping</h4>
                             <p>
-                                Our dedicated support team is available round the clock to assist you.
+                                Get your cello tapes quickly with our Fast Shipping service.
                             </p>
                         </div>
                         <div className="choose__card">

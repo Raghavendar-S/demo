@@ -98,21 +98,6 @@ export default function LoginPage() {
                 <p className="forget_password">Forgot your password?</p>
               </Link>
             </form>
-            {/* <p className="social_login_header">Or sign in with</p>
-            <div className="socials">
-              <div className="social_login google_login">
-                <i className="ri-google-fill"></i>
-                <span>Google</span>
-              </div>
-            </div>
-            <button
-              className="back"
-              onClick={() => {
-                navigate(-1);
-              }}
-            >
-              <i className="ri-arrow-left-s-line" /> Back
-            </button> */}
           </div>
         </div>
       </div>

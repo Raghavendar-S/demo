@@ -200,15 +200,6 @@ form .textarea {
   margin-bottom: 1rem;
 }
 
-.date{
-  height: 2rem;
-  text-align: center;
-  border: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
-  padding: 1rem;
-}
-
 @media (max-width : 800px){
   .card_button_container .admin_btn{
     width: 75%;

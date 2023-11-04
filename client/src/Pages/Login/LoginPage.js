@@ -7,7 +7,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import axios from "axios";
-import toast, {Toaster} from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useAuth } from "../../Context/Auth";
 
 export default function LoginPage() {
@@ -15,8 +15,8 @@ export default function LoginPage() {
   const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const [auth, setAuth] = useAuth();
-  const [email,setEmail] = useState();
-  const [password,setPassword] = useState();
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
 
   const handlePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -49,7 +49,6 @@ export default function LoginPage() {
 
   return (
     <>
-      <Toaster position="top-right" reverseOrder={false}/>
       <div className="container">
         <div className="left_container" id="login"></div>
         <div className="container_right">
@@ -99,7 +98,7 @@ export default function LoginPage() {
                 <p className="forget_password">Forgot your password?</p>
               </Link>
             </form>
-            <p className="social_login_header">Or sign in with</p>
+            {/* <p className="social_login_header">Or sign in with</p>
             <div className="socials">
               <div className="social_login google_login">
                 <i className="ri-google-fill"></i>
@@ -113,7 +112,7 @@ export default function LoginPage() {
               }}
             >
               <i className="ri-arrow-left-s-line" /> Back
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

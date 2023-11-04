@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useRecovery } from "../../Context/Recovery";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function ResetPassword() {
   const navigate = useNavigate();
-  const {email} = useRecovery();
+  const {email, setEmail} = useRecovery();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -29,6 +29,7 @@ export default function ResetPassword() {
         if (response.data.success) {
           toast.success("Password reset successfully");
           navigate("/login");
+          setEmail("");
         } else {
           toast.error(response.data.message);
         }
@@ -43,7 +44,6 @@ export default function ResetPassword() {
 
   return (
     <>
-      <Toaster position="top-right" reverseOrder={false} />
       <div className="container">
         <div className="left_container" id="reset"></div>
         <div className="container_right">

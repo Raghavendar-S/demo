@@ -36,24 +36,24 @@ export default function Products() {
             <h1 className="text-center">All product list</h1>
             <div className="product_list">
               {products.map((p) => (
-                <>
-                  <Link
-                    key={p._id}
-                    to={`/dashboard/admin/product/${p.slug}`}
-                    className="product-link"
-                  >
-                    <div className="custom-card">
-                      <img
-                        src={`${process.env.REACT_APP_URL}/product/product-photo/${p._id}`}
-                        alt={p.name}
-                      />
-                      <div className="custom-card-body">
-                        <h5 className="custom-card-title">{p.name}</h5>
-                        <p className="custom-card-text">{p.description.substring(0,50)}...</p>
-                      </div>
+                <Link
+                  key={p._id}
+                  to={`/dashboard/admin/product/${p.slug}`}
+                  className="product-link"
+                >
+                  <div className="custom-card">
+                    <img
+                      src={`${process.env.REACT_APP_URL}/product/product-photo/${p._id}`}
+                      alt={p.name}
+                    />
+                    <div className="custom-card-body">
+                      <h5 className="custom-card-title">{p.name}</h5>
+                      <p className="custom-card-text">
+                        {p.description.substring(0, 50)}...
+                      </p>
                     </div>
-                  </Link>
-                </>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>

@@ -3,19 +3,16 @@ import "./LoginRegister.css";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useRecovery } from "../../Context/Recovery";
 
 export default function ForgotPassword() {
   const navigate = useNavigate();
-  const { email, setEmail, setOTP } = useRecovery();
+  const { email, setEmail } = useRecovery();
 
   function navigateToOtp() {
     if (email) {
       const OTP = Math.floor(Math.random() * 9000 + 1000);
-      console.log(OTP);
-      setOTP(OTP);
-
       axios
         .post(`${process.env.REACT_APP_URL}/send_recovery_email`, {
           OTP,
@@ -36,7 +33,6 @@ export default function ForgotPassword() {
         { email }
       );
       if (response.data.success) {
-        console.log("Email is verified");
         toast.success("Email is verified");
         navigateToOtp();
       } else {
@@ -50,7 +46,6 @@ export default function ForgotPassword() {
 
   return (
     <>
-      <Toaster position="top-right" reverseOrder={false}/>
       <div className="container">
         <div className="left_container" id="forgot"></div>
         <div className="container_right">

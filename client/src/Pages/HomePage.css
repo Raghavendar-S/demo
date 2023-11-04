@@ -293,4 +293,8 @@ ul li::marker {
     padding-inline: 1rem;
     grid-template-columns: repeat(1, 1fr);
   }
+
+  #dot-img{
+    display: none;
+  }
 }

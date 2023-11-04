@@ -5,7 +5,6 @@ import AdminMenu from "./AdminMenu";
 import axios from "axios";
 import toast from "react-hot-toast";
 import TextField from "@mui/material/TextField";
-import { TextareaAutosize } from "@mui/base/TextareaAutosize";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function UpdateProduct() {
@@ -31,6 +30,11 @@ export default function UpdateProduct() {
       toast.error("Something went wrong while getting single product");
     }
   };
+
+  useEffect(() => {
+    getSingleProduct();
+    //eslint-disable-next-line
+  }, []);
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -73,11 +77,6 @@ export default function UpdateProduct() {
     }
   };
 
-  useEffect(() => {
-    getSingleProduct();
-    //eslint-disable-next-line
-  }, []);
-
   return (
     <Layout>
       <div className="admin_container">
@@ -106,7 +105,7 @@ export default function UpdateProduct() {
                         className="custom-img"
                       />
                     </div>
-                  ) : (
+                  ) : (id && (
                     <div className="text-center">
                       <img
                         src={`${process.env.REACT_APP_URL}/product/product-photo/${id}`}
@@ -114,7 +113,7 @@ export default function UpdateProduct() {
                         className="custom-img"
                       />
                     </div>
-                  )}
+                  ))}
                   <form>
                     <TextField
                       required
@@ -124,9 +123,9 @@ export default function UpdateProduct() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                     />
-                    <TextareaAutosize
+                    <textarea 
+                      rows="3" 
                       required
-                      minRows={4}
                       className="textarea"
                       placeholder="Enter description"
                       name="description"

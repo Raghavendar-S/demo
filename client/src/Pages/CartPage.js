@@ -159,7 +159,7 @@ const CartPage = () => {
         </div>
         <div className="cart_product_container">
           {auth.cart?.map((p) => (
-            <div className="single_product_cart_container outer_card">
+            <div key={p._id} className="single_product_cart_container outer_card">
               <div className="cart_image_container">
                 <img
                   src={`${process.env.REACT_APP_URL}/product/product-photo/${p._id}`}
@@ -174,7 +174,7 @@ const CartPage = () => {
                   Total price: ₹{p.price * p.quantity} for {p.quantity} box
                 </p>
                 <Stack spacing={2} alignItems="center" className="mt-2">
-                  {p.name === "Color Tape" ? (
+                  {p.name === "Color Tape" && (
                     <FormControl>
                       <FormLabel id="tape-color" style={{ color: "#000" }}>Tape Color</FormLabel>
                       <RadioGroup
@@ -212,8 +212,6 @@ const CartPage = () => {
                         />
                       </RadioGroup>
                     </FormControl>
-                  ) : (
-                    <></>
                   )}
                   <FormControl>
                     <FormLabel id="tape-inch" style={{ color: "#000" }}>Tape Width</FormLabel>

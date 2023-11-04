@@ -4,14 +4,16 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./OTPInput.css";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export default function OTPInput() {
-  const { email, otp} = useRecovery();
+  const { email} = useRecovery();
   const [timerCount, setTimer] = React.useState(45);
   const [OTPinput, setOTPinput] = useState([0, 0, 0, 0]);
   const [disable, setDisable] = useState(true);
   const navigate = useNavigate();
 
+  const otp = Math.floor(Math.random() * 9000 + 1000);
   function resendOTP() {
     if (disable) return;
     axios
@@ -20,7 +22,7 @@ export default function OTPInput() {
         recipient_email: email,
       })
       .then(() => setDisable(true))
-      .then(() => alert("A new OTP has succesfully been sent to your email."))
+      .then(() => toast.success("A new OTP has succesfully been sent to your email."))
       .then(() => setTimer(45))
       .catch(console.log);
   }

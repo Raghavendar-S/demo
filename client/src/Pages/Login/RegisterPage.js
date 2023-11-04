@@ -3,15 +3,15 @@ import {Link, useNavigate} from 'react-router-dom';
 import './LoginRegister.css'
 import TextField from "@mui/material/TextField";
 import axios from 'axios';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
-  const [email,setEmail] = useState();
-  const [name,setName] = useState();
-  const [phone,setPhone] = useState();
-  const [password,setPassword] = useState();
-  const [confirmPassword,setConfirmPassword] = useState();
+  const [email,setEmail] = useState("");
+  const [name,setName] = useState("");
+  const [phone,setPhone] = useState("");
+  const [password,setPassword] = useState("");
+  const [confirmPassword,setConfirmPassword] = useState("");
 
   const [errors, setErrors] = useState({});
 
@@ -44,7 +44,6 @@ export default function RegisterPage() {
 
   return (
     <>
-    <Toaster position="top-right" reverseOrder={false}/>
     <div className="container">
       <div className="left_container" id="register"></div>
       <div className="container_right">
@@ -71,7 +70,7 @@ export default function RegisterPage() {
             {errors.confirmPassword && <p className="error-message">{errors.confirmPassword}</p>}
             <button className="submit_btn" id="register_btn">Register</button>
           </form>
-          <p className="social_login_header">Or sign up with</p>
+          {/* <p className="social_login_header">Or sign up with</p>
           <div className="socials">
             <div className="social_login google_login">
               <i className="ri-google-fill"></i>
@@ -85,7 +84,7 @@ export default function RegisterPage() {
               }}
             >
               <i className="ri-arrow-left-s-line" /> Back
-            </button>
+            </button> */}
         </div>
       </div>
     </div>

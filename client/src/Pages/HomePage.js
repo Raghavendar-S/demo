@@ -72,7 +72,7 @@ export default function HomePage(){
             </section>
 
             <section className="section__container choose__container">
-                <img className="choose__bg" src="assets/dot-bg.png" alt="bg" />
+                <img className="choose__bg" src="assets/dot-bg.png" id="dot-img" alt="bg" />
                 <div className="choose__content">
                     <h2 className="section__header">Why Choose Our Cello Tapes</h2>
                     <p className="section__subheader">
@@ -81,10 +81,10 @@ export default function HomePage(){
                     </p>
                     <div className="choose__grid">
                         <div className="choose__card">
-                            <span><i className="ri-truck-line"></i></span>
-                            <h4>Fast Shipping</h4>
+                            <span><i className="ri-customer-service-2-line"></i></span>
+                            <h4>Customer Support</h4>
                             <p>
-                                Get your cello tapes quickly with our Fast Shipping service.
+                                Our dedicated support team is available round the clock to assist you.
                             </p>
                         </div>
                         <div className="choose__card">
@@ -95,10 +95,10 @@ export default function HomePage(){
                             </p>
                         </div>
                         <div className="choose__card">
-                            <span><i className="ri-customer-service-2-line"></i></span>
-                            <h4>Customer Support</h4>
+                            <span><i className="ri-truck-line"></i></span>
+                            <h4>Fast Shipping</h4>
                             <p>
-                                Our dedicated support team is available round the clock to assist you.
+                                Get your cello tapes quickly with our Fast Shipping service.
                             </p>
                         </div>
                         <div className="choose__card">
